@@ -15,6 +15,12 @@ export default class Chat {
     this.onGetMessage = this.onGetMessage.bind(this);
     this.onSendMessage = this.onSendMessage.bind(this);
     this.onLogOut = this.onLogOut.bind(this);
+
+    // if (window.performance.getEntriesByType) {
+    //   if (window.performance.getEntriesByType("navigation")[0].type === "reload") {
+    //     this.onLogOut()
+    //   }
+    // }
   }
 
   createModal() {
@@ -102,17 +108,14 @@ export default class Chat {
     li.append(info);
 
     if (data.userName === this.currentUser.name) {
-      info.textContent = `You, ${date.getHours()}:${date.getMinutes()} ${date.getDate()}.${
-        date.getMonth() + 1
-      }.${date.getFullYear()}`;
+      info.textContent = `You, ${date.getHours()}:${date.getMinutes()} ${date.getDate()}.${date.getMonth() + 1
+        }.${date.getFullYear()}`;
       info.closest(".messages__item").classList.add("messages__item_right");
       info.classList.add("messages__info_right");
     } else {
-      info.textContent = `${
-        data.userName
-      }, ${date.getHours()}:${date.getMinutes()} ${date.getDate()}.${
-        date.getMonth() + 1
-      }.${date.getFullYear()}`;
+      info.textContent = `${data.userName
+        }, ${date.getHours()}:${date.getMinutes()} ${date.getDate()}.${date.getMonth() + 1
+        }.${date.getFullYear()}`;
       info.closest(".messages__item").classList.add("messages__item_left");
     }
 
@@ -232,6 +235,7 @@ export default class Chat {
 
     messagesForm.addEventListener("submit", this.onSendMessage);
     logOutBtn.addEventListener("click", this.onLogOut);
+    window.onbeforeunload = this.onLogOut;
   }
 
   onLogOut() {
