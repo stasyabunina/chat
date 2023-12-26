@@ -139,6 +139,7 @@ body {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .users__item {
@@ -157,6 +158,10 @@ body {
   text-align: left;
 }
 
+.users__username.users__username_red {
+  color: red;
+}
+
 .aside__btn-wrapper {
   padding-right: 15px;
 }
@@ -167,6 +172,7 @@ body {
   background-color: white;
   border: solid #100c08 1px;
   border-radius: 13px;
+  font-size: inherit;
   cursor: pointer;
 }
 

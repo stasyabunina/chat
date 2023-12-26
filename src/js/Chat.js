@@ -131,7 +131,12 @@ export default class Chat {
 
     const username = document.createElement("span");
     username.classList.add("users__username");
-    username.textContent = name;
+    if (name === this.currentUser.name) {
+      username.textContent = "You";
+      username.classList.add("users__username_red");
+    } else {
+      username.textContent = name;
+    }
 
     this.usersElement.append(li);
     li.append(username);
